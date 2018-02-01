@@ -1,0 +1,139 @@
+@model ApiViews.Models.UserViewModel
+
+<div class="container" id="user-profile">
+  
+        <div class="row">
+
+            <div class="col-md-3">
+                <ul class="nav nav-pills nav-stacked admin-menu" >
+                    <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Perfil</a></li>
+                    <li><a href="" data-target-id="change-password"><i class="glyphicon glyphicon-lock"></i> Editar perfil</a></li>                    
+                    <li><a href="" data-target-id="settings"><i class="glyphicon glyphicon-cog"></i> Cambiar contraseña</a></li>                    
+                    <li><a onclick="location.href='@Url.Action("Logout", "Login")'"><i class="glyphicon glyphicon-log-out"></i> Logout</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-9  admin-content" id="profile">
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Name</h3>
+                    </div>
+                    <div class="panel-body">
+                        @Model.Name @Model.LastName
+                    </div>
+                </div>
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Email</h3>
+                    </div>
+                    <div class="panel-body">
+                        @ViewBag.Email
+                    </div>
+                </div>
+                
+            </div>
+   <div class="col-md-9  admin-content" id="settings">
+                <p class="lead">
+                    Recibira un link en su casilla de email. Haga click en el para cambiar su contraseña.
+                </p>
+                <button class="btn btn-primary btn-lg btn-block" onclick="location.href='@Url.Action("Send", "Register")'" >Enviar Link</button>
+
+            </div>
+
+            <div class="col-md-9  admin-content" id="change-password">
+                <form class="form-horizontal" method="post" asp-controller="User" asp-action="UpdateForUser">
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Nombre</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese nombre" value="@Model.Name"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="cols-sm-2 control-label">Apellido</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="lastName" id="lastName"  placeholder="Ingrese apellido" value="@Model.LastName"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="age" class="cols-sm-2 control-label">Edad</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="number" class="form-control" name="age" id="age"  placeholder="Ingrese edad" value="@Model.Age"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Neighborhood" class="cols-sm-2 control-label">Barrio</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="Neighborhood" id="Neighborhood" placeholder="Ingrese barrio" value="@Model.Neighborhood"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Gender" class="cols-sm-2 control-label">Sexo</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select name="gender" id="gender">
+                                        @if(Model.Gender=="Masculino")
+                                        {
+                                            <option value="Masculino" selected="selected">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                        }else{
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino" selected="selected">Femenino</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="lead"> Si desea cambiar su email, se le dehabilitara la cuenta hasta que haga<br> click en el link del mail que le enviaremos a su casilla nueva</p>
+                            <label for="Mail" class="cols-sm-2 control-label">Email</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="Mail" id="Mail" placeholder="Ingrese mail" value="@Model.Mail"/>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <input type="hidden" id="Id" name="Id" value="@Model.Id"/>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Actualizar"/>
+                        </div>
+                    </form>
+            </div>
+
+            <!--<div class="col-md-9  admin-content" id="settings"></div>
+
+            <div class="col-md-9  admin-content" id="logout">
+                <div class="panel panel-info" style="margin: 1em;">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Confirm Logout</h3>
+                    </div>
+                    <div class="panel-body">
+                        Do you really want to logout ?  
+                        <a asp-area="" asp-controller="Login" asp-action="Logout" class="label label-success">
+                            <span >   Yes   </span>
+                        </a>    
+                        
+                    </div>
+                    <form id="logout-form" action="#" method="POST" style="display: none;">
+                    </form>
+
+
+
+                </div>
+            </div>-->
+        </div>
+</div>

@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+  <div class="panel-title text-center"><h2>Mejores Precios</h2></div>
+  <h3>Nuevo Precio</h3>
+    <div class="main-login main-center">
+        <form class="form-horizontal" method="post" asp-controller="Price" asp-action="Create">
+            <div class="form-group">
+                <label for="Product" class="cols-sm-2 control-label">Producto</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <select class="selectpicker" data-show-subtext="true" data-live-search="true" id="IdProduct" name="IdProduct">
+                            @foreach(var item in @Model.ProductList)
+                            {
+                                <option data-subtext="@item.Barcode" value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Store" class="cols-sm-2 control-label">Store</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <select class="selectpicker" data-show-subtext="true" data-live-search="true" id="IdStore" name="IdStore">
+                            @foreach(var item in @Model.StoreList)
+                            {
+                                <option data-subtext="@item.Address" value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Price" class="cols-sm-2 control-label">Precio</label>
+                <div class="cols-sm-10">
+                    <div class="input-group">
+                        <input type="number" class="form-control" name="Cost" id="Cost" placeholder="Ingrese precio"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Crear"/>
+            </div>
+        </form>
+    </div>    
+</div>

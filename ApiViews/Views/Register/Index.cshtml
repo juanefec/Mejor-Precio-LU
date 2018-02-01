@@ -1,0 +1,19 @@
+<div class="row">
+    
+    @{
+        if(ViewBag.Status)
+        {
+            <div style="text-align:center; margin-top:40px; font-size: 16px" class="alert alert-success">
+                <strong> @ViewData["TokenMessg"] </strong>
+            </div>
+        }
+        else{
+            <div style="text-align:center; margin-top:40px; font-size: 16px" class="alert alert-warning">
+                <strong> @ViewData["TokenMessg"] </strong>
+            </div>
+        }
+    }
+        <a asp-area="" asp-controller="Login" asp-action="Index" class="btn btn-primary btn-lg btn-block" aria-pressed="true">Login</a>
+   
+
+</div>

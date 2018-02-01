@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/wwwroot/css/register.css">
+        <!-- Website CSS style -->
+        <link rel="stylesheet" type="text/css" href="/wwwroot/css/register.css">
+        <!-- Website Font style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <title>Admin</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row main">
+                <div class="panel-heading">
+                   <div class="panel-title text-center">
+                        <h1 class="title">Welcome to Mejor Precio</h1>
+                        <hr/>
+                    </div>
+                </div> 
+                <div class="main-login main-center">
+                    <form class="form-horizontal" method="post" asp-controller="Product" asp-action="Create">
+                        <div class="form-group">
+                            <label for="name" class="cols-sm-2 control-label">Name</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese nombre"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Barcode" class="cols-sm-2 control-label">Barcode</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <input type="text" class="form-control" name="Barcode" id="Barcode" placeholder="Ingrese barcode"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Actualizar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

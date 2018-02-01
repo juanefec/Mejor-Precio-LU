@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        
+ 
+ <div class="row row-centered">
+     <header class="bg-primary text-white">
+        <div class="container text-center">
+           
+            <h1 class="display-1">Mejores Precios</h1>
+        
+    
+            <p class="lead">
+            Use el buscador para encontrar los precios mas baratos de un producto, en el mapa
+             apareceran los locales en los que se venden a los <strong>Mejores Precios</strong>. 
+             Podran ver la direccion de los mismos y que tienda lo vende haciendo
+             click en el marcador del mapa.
+            </p>
+        </div>
+    </header>
+    
+</div>
+<div class="row row-centered">
+    <div>
+        
+        <div class="auto-complete">
+            <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="DecodeBarcode">
+                @if (ViewData.ModelState.ContainsKey("InvalidImage")) {
+                    <div class="error" style="color: red">No ha seleccionado una imagen o es invalida.</div>
+                }
+                <div class="input-group">
+                    <label class="input-group-btn">
+                        <span class="btn btn-primary">
+                            Browse&hellip; <input type="file" style="display: none;" accept="image/*" id="BarcodeImage" name="BarcodeImage" multiple>
+                        </span>
+                    </label>
+                    <input type="text" class="form-control" readonly>
+                </div>
+                 <br/>
+                <input type="submit" class="btn btn-primary btn-lg btn-block" value="Buscar por barcode"/>
+                <br/>
+            </form>
+        
+            <input id="searchInput" class="form-control form-control-lg" type="text" placeholder="Que desea buscar?" value="@Model.BarcodeString">     
+            <br/>
+            <button id="searchButton" onclick="searchBtn()" type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
+        </div>
+        <h2 id="searchedTittle"></h2>      
+    <div>
+        <button type="button" onclick="HideMap()" class="fa fa-bars" id="viewList" title= "Lista de Productos" ></button>
+        <button type="button" onclick="ShowMap()" class="fa fa-map-marker" id="viewMap" title = "Mapa" ></button>
+    </div>
+    
+  
+
+    <div id="map"></div>
+    <div id="productTable" hidden>
+        <table id="products" class="table" style="width:100%">
+            <tr>
+                <th> Tienda </th>
+                <th> Dirección </th>
+                <th> Precio </th>
+            </tr>
+        </table>
+    </div>
+    
+</div>
+@if (ViewBag.Autenticado)
+{
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Ultimas 5 Busquedas</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach(var algo in @Model.SearchList)
+        {
+            <tr>
+                <td><a onclick="fullProduct('@algo.Product.Id')">@algo.Product.Name</a></td>
+            </tr>
+        }
+    </tbody>
+  </table>
+}

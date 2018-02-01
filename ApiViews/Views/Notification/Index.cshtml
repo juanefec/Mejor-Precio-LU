@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+  <h2>Notificaciones</h2>
+  <div class="table-responsive">
+  <input type="text" id="searchForTable"/>       
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Store</th>
+            <th>Precio Viejo</th>
+            <th>Precio Nuevo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+      @foreach(var item in @Model.NotificationList)
+        {
+            <tr>
+                <td>@item.Product.Name</td>
+                <td>@item.Store.Name</td>
+                <td>@item.OldPrice.Cost</td>
+                <td>@item.NewPrice.Cost</td>
+                <td><a class="btn btn-warning" asp-area="" asp-controller="Notification" asp-action="Update" asp-route-id="@item.Id">Modificar</a></td>
+            </tr>
+        }
+    </tbody>
+  </table>
+  </div>
+</div>
+   

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+@model ApiViews.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register Page";
+}
+<html lang="en">
+    <head> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+		<title>Admin</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row main">
+				<div class="panel-heading">
+	               <div class="panel-title text-center">
+	               		<h1 class="title">Mejores Precios</h1>
+	               		<hr />
+						<p class="lead">
+							Resgistrese y podra subir los <strong>Mejores Precios</strong> que encuentre, de esta manera todos podran encontrar un mejor precio.
+						</p>
+						<hr />
+	               	</div>
+	            </div> 
+				<div class="main-login main-center">
+					<form class="form-horizontal" id="register-form" role="form" autocomplete="on" class="form" method="post"  asp-area="" asp-controller="Login" asp-action="Register">
+						
+						<div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Nombre</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="name" id="name"  placeholder="Ingrese su nombre" value="@Model.Name"/>
+								</div>
+							</div>
+                            <label for="name" class="cols-sm-2 control-label">Apellido</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="lastname" id="lastname"  placeholder="Ingrese su apellido" value="@Model.LastName"/>
+								</div>
+							</div>
+						</div>
+
+                        <div class="form-group">
+							<label for="name" class="cols-sm-2 control-label">Edad</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-hashtag fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="age" id="age"  placeholder="Ingrese su edad" value="@Model.Age"/>
+								</div>
+							</div>
+						</div>
+                        <div class="form-group">
+							<label for="email" class="cols-sm-2 control-label">Barrio</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-building-o fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="neighborhood" id="neighborhood"  placeholder="Ingrese su barrio" value="@Model.Neighborhood"/>
+								</div>
+							</div>
+						</div>
+                        <div class="form-group">
+                            <label for="Gender" class="cols-sm-2 control-label">Genero</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select name="gender" id="gender">                                       
+                                            <option value="Masculino">Masculino</option>
+                                            <option value="Femenino">Femenino</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+						<div class="form-group">
+							@if (ViewData.ModelState.ContainsKey("emailInvalid")) {
+                            <div class="error" style="color: red">El mail ha sido registrado anteriormente.</div>
+                          }
+							<label for="email" class="cols-sm-2 control-label">Email</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+									<input type="text" class="form-control" name="mail" id="mail"  placeholder="Enter your Email" required/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							@if (ViewData.ModelState.ContainsKey("passwordInvalid")) {
+                            <div class="error" style="color: red">Please confirm your password.</div>
+                          }
+							<label for="password" class="cols-sm-2 control-label">Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="password" id="password"  placeholder="Enter your Password" required/>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+							<div class="cols-sm-10">
+								<div class="input-group">
+									<span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+									<input type="password" class="form-control" name="ConfirmPassword" id="ConfirmPassword"  placeholder="Confirm your Password"/>
+								</div>
+							</div>
+						</div>
+						<div >
+							<p class="lead">
+								Se enviara un mail a la casilla ingresada en el formulario. Haga click en el link para validar</br> su identidad y poder ingresar a su usuario. 
+
+							</p>
+
+						</div>
+
+						<div class="form-group ">
+							<input type="submit" value="Registrarse" onclick="validatePassword()" class="btn btn-lg btn-primary btn-block"></input>
+						</div>
+						<div class="login-register">
+				            <a class="btn btn-lg btn-secondary btn-block" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+				         </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

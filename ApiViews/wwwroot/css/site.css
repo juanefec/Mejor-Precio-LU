@@ -1,0 +1,89 @@
+﻿@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+body {
+    background-color: #ccffff;
+    margin: 35px;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.auto-complete {
+    margin: 14px;
+}
+
+.stylish-input-group .input-group-addon {
+    background: white !important;
+}
+
+.stylish-input-group .form-control {
+    border-right: 0;
+    box-shadow: 0 0 0;
+    border-color: #ccc;
+}
+
+.stylish-input-group button {
+    border: 0;
+    background: transparent;
+}
+
+#stiched {
+    /*stitching*/
+    outline: 1px dashed #98abb9;
+    outline-offset: -5px;
+    background-color: #647988;
+    height: 220px;
+    width: 90%;
+    margin: 100px auto;
+    /*shadow*/
+    -webkit-box-shadow: 2px 2px 2px #000;
+    -moz-box-shadow: 2px 2px 2px #000;
+    box-shadow: 2px 2px 2px #000;
+}
+
+.display-1 {
+    text-align: center;
+    margin: 25px;
+    margin-top: 15px;
+    -webkit-text-stroke-width: -22px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 82px;
+}
+
+.lead {
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-text-stroke-width: -18px;
+}
+
+#user-profile {
+    margin: 25px;
+}
+
+#map {
+    height: 650px;
+    width: 100%;
+}
+
+
+/* Wrapping element */
+
+
+/* Set some basic padding to keep content from hitting the edges */
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.form-gap {
+    padding-top: 70px;
+}
+
+
+/* Hide/rearrange for smaller screens */
+
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

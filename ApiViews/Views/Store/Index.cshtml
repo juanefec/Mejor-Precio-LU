@@ -1,0 +1,49 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+  <h2>Tiendas</h2>
+    <a asp-controller="Store" asp-action="Create" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-plus"></span> Nuevo 
+    </a> 
+  <div class="table-responsive">         
+  <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group input-append">
+                    <input type="text" id="searchForTable" class="form-control"  placeholder="Search" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>   
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Direccion</th>
+            <th>Modificar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+      @foreach(var algo in @Model.StoreList)
+        {
+            <tr>
+                <td>@algo.Name</td>
+                <td>@algo.Address</td>
+                <td><a class="btn btn-warning" asp-area="" asp-controller="Store" asp-action="Update" asp-route-id="@algo.Id">Modificar</a></td>
+                <td><a class="btn btn-danger" asp-area="" asp-controller="Store" asp-action="Delete" asp-route-id="@algo.Id"/>Borrar</td>
+            </tr>
+        }
+    </tbody>
+  </table>
+  </div>
+</div>
+   

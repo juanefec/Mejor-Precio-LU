@@ -1,0 +1,58 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="container">
+  <h2>Usuarios</h2>
+    <a asp-controller="User" asp-action="Create" class="btn btn-info btn-lg">
+        <span class="glyphicon glyphicon-plus"></span> Nuevo 
+    </a> 
+  <div class="table-responsive">
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+            <div id="imaginary_container"> 
+                <div class="input-group stylish-input-group input-append">
+                    <input type="text" id="searchForTable" class="form-control"  placeholder="Search" >
+                    <span class="input-group-addon">
+                        <button type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>  
+                    </span>
+                </div>
+            </div>
+        </div>
+	</div>         
+  <table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Barrio</th>
+            <th>Genero</th>
+            <th>Mail</th>
+            <th>Tipo</th>
+            <th>Modificar</th>
+            <th>Borrar</th>
+        </tr>
+    </thead>
+    <tbody id="tableBody">
+      @foreach(var algo in @Model.UserList)
+        {
+            <tr>
+                <td>@algo.Name</td>
+                <td>@algo.LastName</td>
+                <td>@algo.Age</td>
+                <td>@algo.Neighborhood</td>
+                <td>@algo.Gender</td>
+                <td>@algo.Mail</td>
+                <td>@algo.Type</td>
+                <td><a class="btn btn-warning" asp-area="" asp-controller="User" asp-action="Update" asp-route-id="@algo.Id">Modificar</a></td>
+                <td><a class="btn btn-danger" asp-area="" asp-controller="User" asp-action="Delete" asp-route-id="@algo.Id"/>Borrar</td>
+            </tr>
+        }
+    </tbody>
+  </table>
+  </div>
+</div>

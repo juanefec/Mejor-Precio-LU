@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+@model NotificationViewModel
+
+<html lang="en">
+    <head> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="/wwwroot/css/register.css">
+        <!-- Website CSS style -->
+        <link rel="stylesheet" type="text/css" href="/wwwroot/css/register.css">
+        <!-- Website Font style -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+        <!-- Google Fonts -->
+        <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+        <title>Admin</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row main">
+                <div class="panel-heading">
+                   <div class="panel-title text-center">
+                        <h1 class="title">Welcome to Mejor Precio</h1>
+                        <hr/>
+                    </div>
+                </div> 
+                <div class="main-login main-center">
+                    <form class="form-horizontal" id="form1" name="form1" method="post" asp-controller="Notification" asp-action="Update">
+                        <div class="form-group">
+                            <label for="Product" class="cols-sm-2 control-label">Producto</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    @Model.Product.Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Store" class="cols-sm-2 control-label">Store</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    @Model.Store.Name
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="Report" class="cols-sm-2 control-label">Estado</label>
+                            <div class="cols-sm-10">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <select name="NewPrice.Report" id="NewPrice.Report">
+                                        <option value="Aceptado">Aceptado</option>
+                                        <option value="Rechazado">Rechazado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="NewPrice.Id" id="NewPrice.Id" value="@Model.NewPrice.Id"/>
+                        <input type="hidden" name="Id" id="Id" value="@Model.Id"/>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Actualizar"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

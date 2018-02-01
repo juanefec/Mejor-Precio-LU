@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@ViewData["Message"]</h3>
+
+
+@ViewBag.Barcode
+
+<div class="row">
+    <div class="col-md-7">
+        <h1>
+            <div id="autoComplete">
+                <input id="searchInput" class="form-control form-control-lg" type="text" placeholder="Que desea buscar?" value="@Model.BarcodeString">            
+            </div>
+        </h1>
+        
+        <button id="searchButton" onclick="searchBtn()" type="button" class="btn btn-primary btn-lg btn-block">Buscar</button>
+
+        <form method="post" enctype="multipart/form-data" asp-controller="Search" asp-action="DecodeBarcode">
+            <input type="file" accept="image/*" id="BarcodeImage" name="BarcodeImage"/>
+            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Buscar por barcode"/>
+        </form>
+        
+        <h2>Resultados de busqueda:</h2>      
+   
+    <div id="map"></div>
+    <input type="button" onclick="changeViewResultsBtn()" class="btn btn-lg btn-secondary btn-block" id="viewResults" value= "Ver Lista de Productos"></input>
+    </div>   
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ultimas 5 Busquedas</th>
+        </tr>
+    </thead>
+    <tbody>
+      @foreach(var algo in @Model.SearchList)
+        {
+            <tr>
+                <td><a onclick="fullProduct('@algo.Product.Id')">@algo.Product.Name</a></td>
+            </tr>
+        }
+    </tbody>
+  </table>
